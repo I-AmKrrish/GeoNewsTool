@@ -7,7 +7,8 @@ load_dotenv()
 import os
 import requests
 
-from langchain_mistralai import ChatMistralAI
+# from langchain_mistralai import ChatMistralAI
+from langchain_groq import ChatGroq
 from langchain.tools import tool
 from langchain_core.messages import HumanMessage, ToolMessage, AIMessage
 from tavily import TavilyClient
@@ -89,7 +90,10 @@ def ask_human_approval(tool_name: str) -> bool:
 # ============================================================
 # STEP 5 — LLM + Agent Setup
 # ============================================================
-llm = ChatMistralAI(model="mistral-small-2506")
+llm = ChatGroq(
+    model="openai/gpt-oss-120b",
+    temperature=0,
+)
 checkpointer = MemorySaver()
 
 tools = [get_weather, get_news]

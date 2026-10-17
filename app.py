@@ -6,7 +6,8 @@ import requests
 import streamlit as st
 from tavily import TavilyClient
 
-from langchain_mistralai import ChatMistralAI
+# from langchain_mistralai import ChatMistralAI
+from langchain_groq import ChatGroq
 from langchain.tools import tool
 from langchain_core.messages import AIMessage
 from langgraph.prebuilt import create_react_agent
@@ -237,7 +238,10 @@ def build_agent():
         except Exception as e:
             return f"Error fetching news: {e}"
 
-    llm = ChatMistralAI(model="mistral-small-2506")
+    llm = ChatGroq(
+    model="openai/gpt-oss-120b",
+    temperature=0,
+    )
     checkpointer = MemorySaver()
 
     agent = create_react_agent(

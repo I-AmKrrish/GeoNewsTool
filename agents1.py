@@ -102,7 +102,7 @@ llm_with_tool = llm.bind_tools([get_weather, get_news])
 # ============================================================
 messages = []
 
-print("city intelligence sysyem ")
+print("city intelligence system ")
 print("type 'exit' to quit")
 
 while True:

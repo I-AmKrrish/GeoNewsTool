@@ -1,0 +1,2 @@
+Q1. how does the agent know to call weather vs. news?
+Ans. the LLM reasons over the user’s query against each tool’s description and picks the appropriate one — that’s the built-in ReAct mechanism
